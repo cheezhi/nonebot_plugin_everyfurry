@@ -18,7 +18,7 @@ def decision():
     old_time = file_text[0]
     new_time = time.strftime("%Y%m%d", time.localtime())
 
-    if old_time != new_time:
+    if old_time != new_time or file_text[4] == 0:
         print('缓存信息为旧，正在启动爬虫')
         new_file_text = crawler_furry()
         with open(img_msg_file,'w',encoding='UTF-8') as f:
