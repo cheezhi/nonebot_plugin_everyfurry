@@ -9,6 +9,7 @@ import json
 ssl._create_default_https_context = ssl._create_unverified_context
 def crawler_furry():
     try:
+        state_code = 0
         resp = request.urlopen("https://api.hifurry.cn/everyfur/today.json")
         json_data = json.loads(resp.read().decode("utf-8"))
         
@@ -20,13 +21,13 @@ def crawler_furry():
         # print(write_name)
         
         #爬取图片简介
-        pic_text = json_data['PictureUrl']
+        pic_text = json_data['WorkInformation']
         #print(pic_text)
         
         #print("okk")
         
         #爬取图片url
-        pic_url = 'PictureUrl'
+        pic_url = json_data['PictureUrl']
 
         
         #编辑消息内容
@@ -35,20 +36,20 @@ def crawler_furry():
         #print(msg_two)
         
         today_fur_dic = {'StateCode': state_code, 'Date': time.strftime("%Y%m%d", time.localtime()), 'PictureUrl': pic_url, 'AuthorName': write_name, 'WorkInformation': pic_text}
-        return [time.strftime("%Y%m%d", time.localtime()), msg_one, msg_two, pic_url, today_fur_dic]
+        return [time.strftime("%Y%m%d", time.localtime()), msg_one, msg_two, pic_url, state_code,  today_fur_dic]
 
     except:
         today_fur_json = {"StateCode": 0, "Date": "", "PictureUrl": "", "AuthorName": "", "WorkInformation": ""}
         today_fur_json = json.dumps(today_fur_json, ensure_ascii=False)
         print("error")
-        if state_code == '0':
+        if state_code != 1:
             #编辑消息内容
-            msg_one = "emmm，今天貌似没有推送唉owo"
+            msg_one = None
             msg_two = msg_one
             pic_url = None
             today_fur_dic = today_fur_json
         state_code = 0
-        pic_url = 'None'
-        return {"time":time.strftime("%Y%m%d", time.localtime()), "msg_one":msg_one, "msg_two":msg_two, "pic_url":pic_url, "today_fur_dic":today_fur_dic}
+        pic_url = None
+        return [time.strftime("%Y%m%d", time.localtime()), msg_one, msg_two, pic_url, state_code, today_fur_dic]
 
         
