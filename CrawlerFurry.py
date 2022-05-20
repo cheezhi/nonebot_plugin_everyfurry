@@ -12,29 +12,30 @@ def crawler_furry():
         state_code = 0
         resp = request.urlopen("https://api.hifurry.cn/everyfur/today.json")
         json_data = json.loads(resp.read().decode("utf-8"))
-        
+
         #爬取状态代码
         state_code = json_data['StateCode']
-        
+
         #爬取图片作者name
         write_name = json_data['AuthorName']
         # print(write_name)
-        
+
         #爬取图片简介
         pic_text = json_data['WorkInformation']
         #print(pic_text)
-        
+
         #print("okk")
-        
+
         #爬取图片url
         pic_url = json_data['PictureUrl']
 
-        
+
         #编辑消息内容
-        msg_one = "嗷呜，{}月{}日兽兽推送".format(time.strftime("%m", time.localtime()), time.strftime("%d", time.localtime()))
+        msg_one = f'嗷呜，{time.strftime("%m", time.localtime())}月{time.strftime("%d", time.localtime())}日兽兽推送'
+
         msg_two = "来源：{}\n简介：{}\n详情：https://furry.lihouse.xyz/index.php?ftime={}".format(write_name, pic_text, time.strftime("%Y%m%d", time.localtime()))
         #print(msg_two)
-        
+
         today_fur_dic = {'StateCode': state_code, 'Date': time.strftime("%Y%m%d", time.localtime()), 'PictureUrl': pic_url, 'AuthorName': write_name, 'WorkInformation': pic_text}
         return [time.strftime("%Y%m%d", time.localtime()), msg_one, msg_two, pic_url, state_code,  today_fur_dic]
 
