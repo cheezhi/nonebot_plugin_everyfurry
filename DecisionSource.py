@@ -2,7 +2,7 @@ import time
 from CrawlerFurry import crawler_furry
 import os
 path = os.path.split(os.path.realpath(__file__))[0]
-img_msg_file = path + '/today_furry_msg.txt'
+img_msg_file = f'{path}/today_furry_msg.txt'
 
 def decision():
     with open(img_msg_file,'r',encoding='UTF-8') as f: 
