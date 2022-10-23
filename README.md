@@ -22,4 +22,4 @@ Github开源地址：https://github.com/ye-tutu/nonebot_plugin_everyfurry
 
 如果你决心白嫖，那也请你给项目一个**star**，这也将成为作者维护项目的动力
 
-©️2021 Tutu
+©️2022 Tutu
