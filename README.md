@@ -12,9 +12,7 @@ Github开源地址：https://github.com/ye-tutu/nonebot_plugin_everyfurry
 
 ### 食用方法
 
-将该插件clone至src/plugins下
-
-在bot.py中添加<code>nonebot.load_plugins('src/plugins/nonebot_plugin_everyfur')</code>
+指令：今日兽兽
 
 ## 赞助
 
