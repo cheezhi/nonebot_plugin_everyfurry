@@ -1,10 +1,10 @@
-## 今日兽兽 nonebot_plugin_everyfur
+## 今日兽兽 nonebot_plugin_everyfurry
 
 这是土土开发的nonebot插件——今日兽兽
 
 （福瑞控狂喜！）
 
-Github开源地址：https://github.com/ye-tutu/nonebot_plugin_everyfur
+Github开源地址：https://github.com/ye-tutu/nonebot_plugin_everyfurry
 
 ### 功能展示
 

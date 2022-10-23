@@ -1,5 +1,5 @@
 import time
-from CrawlerFurry import crawler_furry
+from .CrawlerFurry import crawler_furry
 import os
 path = os.path.split(os.path.realpath(__file__))[0]
 img_msg_file = path + '/today_furry_msg.txt'
@@ -26,4 +26,6 @@ def decision():
         return new_file_text
     else:
         print('已找到匹配缓存')
+        print(file_text)
+        print(file_text[4])
         return file_text
