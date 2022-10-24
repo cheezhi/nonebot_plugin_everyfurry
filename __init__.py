@@ -29,7 +29,7 @@ async def send_furry(bot: Bot, event: Event, state: T_State):
                 原文链接：{msg["org"]}\n
                 详情：{msg['date']}
                 '''))
-
+            await today_furry.send(Message(msg_pic))
             l.info(msg)
         else:
             await today_furry.send(Message('emmm，今天貌似没有推送唉owo'))
