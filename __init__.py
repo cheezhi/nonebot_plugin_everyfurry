@@ -24,9 +24,9 @@ async def send_furry(bot: Bot, event: Event, state: T_State):
             await today_furry.send(Message('嗷呜，{}月{}日兽兽推送'.format(time.strftime("%m", time.localtime()), time.strftime("%d", time.localtime()))))
             await today_furry.send(Message(
                 f'''
-来源：{msg["author"]}\n
-简介：{msg["desc"]}\n
-原文链接：{msg["org"]}\n
+来源：{msg["author"]}
+简介：{msg["desc"]}
+原文链接：{msg["org"]}
 详情：{msg['date']}
 '''))
             await today_furry.send(Message(msg_pic))
