@@ -19,9 +19,14 @@ today_furry = on_command("everyfurry", aliases={'今日兽兽', })
 async def send_furry(bot: Bot, event: Event, state: T_State):
     msg = await get_furry_img()
     try:
-        if not msg is None:
+        if msg is not None:
             msg_pic = f"[CQ:image,file={msg['pic']},id=40000]"
-            await today_furry.send(Message('嗷呜，{}月{}日兽兽推送'.format(time.strftime("%m", time.localtime()), time.strftime("%d", time.localtime()))))
+            await today_furry.send(
+                Message(
+                    f'嗷呜，{time.strftime("%m", time.localtime())}月{time.strftime("%d", time.localtime())}日兽兽推送'
+                )
+            )
+
             await today_furry.send(Message(
                 f'''
 来源：{msg["author"]}
@@ -42,6 +47,14 @@ async def get_furry_img(d: str = 'today'):
     async with aiohttp.ClientSession() as session:
         async with session.get(f'https://bot.hifurry.cn/everyfurry?date={d}') as resp:
             r = await resp.json()
-            if not r['StateCode']:
-                return None
-            return {'pic': r['PictureUrl'], 'author': r['AuthorName'], 'desc': r['WorkInformation'], 'org':  r['SourceLink'], 'date': f'https://bot.hifurry.cn/everyfurry?date={time.strftime("%Y%m%d")}'}
+            return (
+                {
+                    'pic': r['PictureUrl'],
+                    'author': r['AuthorName'],
+                    'desc': r['WorkInformation'],
+                    'org': r['SourceLink'],
+                    'date': f'https://bot.hifurry.cn/everyfurry?date={time.strftime("%Y%m%d")}',
+                }
+                if r['StateCode']
+                else None
+            )
