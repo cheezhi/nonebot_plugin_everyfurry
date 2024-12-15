@@ -1,3 +1,5 @@
+# 早已失效，请勿使用
+
 ## 今日兽兽 nonebot_plugin_everyfurry
 
 这是土土开发的nonebot插件——今日兽兽
